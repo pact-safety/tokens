@@ -1,0 +1,31 @@
+/* Tailwind v4 theme over the PACT tokens. Import after tokens.css:
+ *   @import "tailwindcss";
+ *   @import "@pact-safety/tokens/tokens.css";
+ *   @import "@pact-safety/tokens/tailwind.css";
+ * `inline` makes utilities (bg-paper, text-muted, font-display) read the
+ * token variables, so the dark palette and product accent apply without
+ * Tailwind's dark: variant.
+ */
+@theme inline {
+  --color-paper: var(--pact-paper);
+  --color-sheet: var(--pact-sheet);
+  --color-hover: var(--pact-hover);
+  --color-rule: var(--pact-rule);
+  --color-faint: var(--pact-faint);
+  --color-ink: var(--pact-ink);
+  --color-ink-2: var(--pact-ink-2);
+  --color-muted: var(--pact-muted);
+  --color-code: var(--pact-code-bg);
+  --color-code-fg: var(--pact-code-fg);
+  --color-code-muted: var(--pact-code-muted);
+  --color-ok: var(--pact-ok);
+  --color-warn: var(--pact-warn);
+  --color-err: var(--pact-err);
+  --color-accent: var(--pact-accent);
+
+  --font-display: var(--pact-font-display);
+  --font-mono: var(--pact-font-mono);
+  --font-sans: var(--pact-font-sans);
+
+  --radius-pact: var(--pact-radius);
+}

@@ -1,0 +1,134 @@
+/* PACT design tokens: the shared color, type and shape vocabulary for every
+ * pact-safety tool. Edit values here, tag a release, then update consumers.
+ *
+ * Two layers:
+ * 1. Raw palettes (--pact-light-*, --pact-dark-*). Use these only when an app
+ *    owns its own theme switching and must pin one palette (bench is dark).
+ * 2. Resolved tokens (--pact-paper, --pact-ink, ...). These follow the OS
+ *    color scheme, and data-pact-theme="light|dark" on <html> forces one.
+ *    Most apps use only these.
+ *
+ * One accent per product, chosen with data-pact-product on <html>. Status
+ * colors (ok/warn/err) are separate from accents and never stand in for one.
+ * Every text pairing here passes WCAG AA (4.5:1); `npm test` checks it.
+ */
+
+:root {
+  /* light palette */
+  --pact-light-paper: #EEF0EC;
+  --pact-light-sheet: #F8F9F6;
+  --pact-light-hover: #E4E8E2;
+  --pact-light-rule: #C9CEC9;
+  --pact-light-faint: #A3AAA5;
+  --pact-light-ink: #111312;
+  --pact-light-ink-2: #3B423E;
+  --pact-light-muted: #4E5551;
+  --pact-light-code-bg: #111312;
+  --pact-light-code-fg: #E6E9E5;
+  --pact-light-code-muted: #9AA29C;
+  --pact-light-ok: #1E6B45;
+  --pact-light-warn: #8A5A00;
+  --pact-light-err: #B3261E;
+  --pact-light-accent-pact: #2443C4;
+  --pact-light-accent-bench: #8F5B00;
+  --pact-light-accent-touchstone: #A8401F;
+
+  /* dark palette */
+  --pact-dark-paper: #0F1110;
+  --pact-dark-sheet: #161917;
+  --pact-dark-hover: #1C201E;
+  --pact-dark-rule: #2A2F2C;
+  --pact-dark-faint: #5A615D;
+  --pact-dark-ink: #E4E7E3;
+  --pact-dark-ink-2: #B9C0BA;
+  --pact-dark-muted: #9AA29C;
+  --pact-dark-code-bg: #1C201E;
+  --pact-dark-code-fg: #E4E7E3;
+  --pact-dark-code-muted: #9AA29C;
+  --pact-dark-ok: #5CC98E;
+  --pact-dark-warn: #F5B042;
+  --pact-dark-err: #F2867E;
+  --pact-dark-accent-pact: #9DB0FF;
+  --pact-dark-accent-bench: #E8B339;
+  --pact-dark-accent-touchstone: #F08A6E;
+
+  /* type: faces each app loads itself (Google Fonts: Martian Mono, IBM Plex Mono, IBM Plex Sans) */
+  --pact-font-display: "Martian Mono", ui-monospace, Menlo, monospace;
+  --pact-font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --pact-font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+
+  /* shape */
+  --pact-radius: 6px;
+}
+
+/* resolved tokens: light by default */
+:root,
+:root[data-pact-theme="light"] {
+  --pact-paper: var(--pact-light-paper);
+  --pact-sheet: var(--pact-light-sheet);
+  --pact-hover: var(--pact-light-hover);
+  --pact-rule: var(--pact-light-rule);
+  --pact-faint: var(--pact-light-faint);
+  --pact-ink: var(--pact-light-ink);
+  --pact-ink-2: var(--pact-light-ink-2);
+  --pact-muted: var(--pact-light-muted);
+  --pact-code-bg: var(--pact-light-code-bg);
+  --pact-code-fg: var(--pact-light-code-fg);
+  --pact-code-muted: var(--pact-light-code-muted);
+  --pact-ok: var(--pact-light-ok);
+  --pact-warn: var(--pact-light-warn);
+  --pact-err: var(--pact-light-err);
+  --pact-accent-pact: var(--pact-light-accent-pact);
+  --pact-accent-bench: var(--pact-light-accent-bench);
+  --pact-accent-touchstone: var(--pact-light-accent-touchstone);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-pact-theme="light"]) {
+    --pact-paper: var(--pact-dark-paper);
+    --pact-sheet: var(--pact-dark-sheet);
+    --pact-hover: var(--pact-dark-hover);
+    --pact-rule: var(--pact-dark-rule);
+    --pact-faint: var(--pact-dark-faint);
+    --pact-ink: var(--pact-dark-ink);
+    --pact-ink-2: var(--pact-dark-ink-2);
+    --pact-muted: var(--pact-dark-muted);
+    --pact-code-bg: var(--pact-dark-code-bg);
+    --pact-code-fg: var(--pact-dark-code-fg);
+    --pact-code-muted: var(--pact-dark-code-muted);
+    --pact-ok: var(--pact-dark-ok);
+    --pact-warn: var(--pact-dark-warn);
+    --pact-err: var(--pact-dark-err);
+    --pact-accent-pact: var(--pact-dark-accent-pact);
+    --pact-accent-bench: var(--pact-dark-accent-bench);
+    --pact-accent-touchstone: var(--pact-dark-accent-touchstone);
+    color-scheme: dark;
+  }
+}
+
+:root[data-pact-theme="dark"] {
+  --pact-paper: var(--pact-dark-paper);
+  --pact-sheet: var(--pact-dark-sheet);
+  --pact-hover: var(--pact-dark-hover);
+  --pact-rule: var(--pact-dark-rule);
+  --pact-faint: var(--pact-dark-faint);
+  --pact-ink: var(--pact-dark-ink);
+  --pact-ink-2: var(--pact-dark-ink-2);
+  --pact-muted: var(--pact-dark-muted);
+  --pact-code-bg: var(--pact-dark-code-bg);
+  --pact-code-fg: var(--pact-dark-code-fg);
+  --pact-code-muted: var(--pact-dark-code-muted);
+  --pact-ok: var(--pact-dark-ok);
+  --pact-warn: var(--pact-dark-warn);
+  --pact-err: var(--pact-dark-err);
+  --pact-accent-pact: var(--pact-dark-accent-pact);
+  --pact-accent-bench: var(--pact-dark-accent-bench);
+  --pact-accent-touchstone: var(--pact-dark-accent-touchstone);
+  color-scheme: dark;
+}
+
+/* the product's accent; PACT blue unless the page names a product */
+:root { --pact-accent: var(--pact-accent-pact); }
+:root[data-pact-product="bench"] { --pact-accent: var(--pact-accent-bench); }
+:root[data-pact-product="touchstone"] { --pact-accent: var(--pact-accent-touchstone); }

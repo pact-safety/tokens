@@ -1,0 +1,16 @@
+{
+  "name": "@pact-safety/tokens",
+  "version": "0.1.0",
+  "description": "Shared color, type and shape tokens for pact-safety tools.",
+  "license": "MIT",
+  "type": "module",
+  "files": ["tokens.css", "tailwind.css"],
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./tailwind.css": "./tailwind.css"
+  },
+  "scripts": {
+    "test": "node --test test/contrast.test.mjs"
+  },
+  "repository": "github:pact-safety/tokens"
+}
